@@ -15,24 +15,23 @@
   ],
   "security": [
     {
-      "bearerAuth": []
+      "api_key": []
     }
   ],
   "paths": {
-    "/plants": {
+    "/testing": {
       "get": {
         "description": "Returns all plants from the system that the user has access to",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of results to return",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Plant"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Plant response",
@@ -49,42 +48,6 @@
           },
           "400": {
             "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Creates a new plant in the store",
-        "requestBody": {
-          "description": "Plant to add to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Plant"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "unexpected error",
             "content": {
               "application/json": {
                 "schema": {
@@ -134,16 +97,17 @@
     "schemas": {
       "Plant": {
         "required": [
-          "name"
+          "url",
+          "brand_name"
         ],
         "type": "object",
         "properties": {
-          "name": {
-            "description": "The name of the plant",
+          "url": {
+            "description": "The companies website url e.g: https://generatemomentum.ai",
             "type": "string"
           },
-          "tag": {
-            "description": "Tag to specify the type",
+          "brand_name": {
+            "description": "The companies brand name e.g: Momentum Ai",
             "type": "string"
           }
         }
@@ -186,9 +150,11 @@
       }
     },
     "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+      "api_key": {
+        "type": "apiKey",
+        "name": "x-api-key",
+        "in": "header",
+        "description": "Authentication via API key"
       }
     }
   }

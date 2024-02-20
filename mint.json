@@ -1,84 +1,45 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
-  "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
-  },
+  "name": "Momentum API",
+
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#e5bce6",
+    "light": "#e5bce6",
+    "dark": "#e5bce6",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#e5bce6",
+      "to": "#e5bce6"
     }
   },
   "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
-    }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Support",
+    "url": "mailto:hi@mintlify.com"
   },
   "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
   ],
   "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    }
+
   ],
   "navigation": [
     {
       "group": "Get Started",
       "pages": [
-        "introduction",
-        "quickstart",
-        "development"
-      ]
-    },
-    {
-      "group": "Essentials",
-      "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
         "api-reference/introduction"
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Firmographics",
+      "pages": [
+        "api-reference/endpoint/get"
+      ]
+    },
+    {
+      "group": "Endpoints",
       "pages": [
         "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
         "api-reference/endpoint/delete"
       ]
     }
