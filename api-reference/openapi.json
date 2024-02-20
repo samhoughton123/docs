@@ -24,7 +24,7 @@
   "paths": {
     "/company/firmographics": {
       "post": {
-        "description": "Returns all plants from the system that the user has access 5",
+        "description": "Returns all plants from the system that the user has access 10",
         "requestBody": {
           "required": true,
           "content": {
@@ -39,7 +39,7 @@
           "testing123": {
             "{$request.body#/callback_url}": {
               "post": {
-                "description": "Returns all plants from the system that the user has access 4",
+                "description": "Returns all plants from the system that the user has access",
                 "requestBody": {
                   "required": true,
                   "content": {
@@ -66,15 +66,19 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WebhookAcceptedResponse"
-                  }
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/WebhookAcceptedResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Company"
+                    }
+                  ]
                 }
               }
             }
           },
-          "400": {
+          "404": {
             "description": "Unexpected error",
             "content": {
               "application/json": {
