@@ -68,10 +68,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/FirmographicsWebhookResponse"
+                      "$ref": "#/components/schemas/WebhookAcceptedResponse"
                     },
                     {
-                      "$ref": "#/components/schemas/WebhookAcceptedResponse"
+                      "$ref": "#/components/schemas/FirmographicsWebhookResponse"
                     }
                   ]
                 }
