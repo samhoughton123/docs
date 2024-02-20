@@ -24,7 +24,7 @@
   "paths": {
     "/company/firmographics": {
       "post": {
-        "description": "Returns all plants from the system that the user has access 11",
+        "description": "Get firmographic information for company",
         "requestBody": {
           "required": true,
           "content": {
@@ -170,7 +170,7 @@
             "type": "string",
             "format": "uuid"
           },
-          "info": {
+          "data": {
             "type": "object",
             "properties": {
               "industry": {
