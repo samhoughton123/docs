@@ -15,7 +15,7 @@
   ],
   "security": [
     {
-      "bearerAuth": []
+      "api-key": "YOUR-API_KEY"
     }
   ],
   "paths": {
