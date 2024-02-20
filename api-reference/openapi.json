@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
+    "title": "OpenAPI Momentum Inbound",
+    "description": "Momentum Inbound API for enriching companies",
     "license": {
       "name": "MIT"
     },
@@ -30,7 +30,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Plant"
+                "$ref": "#/components/schemas/Company"
               }
             }
           }
@@ -43,7 +43,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Plant"
+                    "$ref": "#/components/schemas/WebhookAcceptedResponse"
                   }
                 }
               }
@@ -98,10 +98,11 @@
   },
   "components": {
     "schemas": {
-      "Plant": {
+      "Company": {
         "required": [
           "url",
-          "brand_name"
+          "brand_name",
+          "callback_url"
         ],
         "type": "object",
         "properties": {
@@ -112,13 +113,30 @@
           "brand_name": {
             "description": "The companies brand name e.g: Momentum Ai",
             "type": "string"
+          },
+          "callback_url": {
+            "description": "Url to receive the enriched company information",
+            "type": "string"
+          }
+        }
+      },
+      "WebhookAcceptedResponse": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Webhook event id e.g: 963ede37-5fcf-4e41-bee7-cfbafdcabd4e",
+            "type": "string",
+            "format": "uuid"
           }
         }
       },
       "NewPlant": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/Plant"
+            "$ref": "#/components/schemas/Company"
           },
           {
             "required": [
