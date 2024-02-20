@@ -15,7 +15,7 @@
   ],
   "security": [
     {
-      "api-key": "YOUR-API_KEY"
+      "api-key": []
     }
   ],
   "paths": {
@@ -187,8 +187,9 @@
     },
     "securitySchemes": {
       "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+        "type": "apiKey",
+        "in": "header",
+        "name": "api-key"
       }
     }
   }
