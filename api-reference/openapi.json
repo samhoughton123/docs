@@ -10,7 +10,10 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://dev.inbound.generatemomentum.ai/api/remote"
+    },
+    {
+      "url": "https://inbound.generatemomentum.ai/api/remote"
     }
   ],
   "security": [
@@ -19,7 +22,7 @@
     }
   ],
   "paths": {
-    "/testing": {
+    "/company/firmographics": {
       "get": {
         "description": "Returns all plants from the system that the user has access to",
         "requestBody": {
