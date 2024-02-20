@@ -23,8 +23,8 @@
   ],
   "paths": {
     "/company/firmographics": {
-      "get": {
-        "description": "Returns all plants from the system that the user has access to",
+      "post": {
+        "description": "Returns all plants from the system that the user has access 5",
         "requestBody": {
           "required": true,
           "content": {
@@ -35,8 +35,33 @@
             }
           }
         },
+        "callbacks": {
+          "testing123": {
+            "{$request.body#/callback_url}": {
+              "post": {
+                "description": "Returns all plants from the system that the user has access 4",
+                "requestBody": {
+                  "required": true,
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Company"
+                      }
+                    }
+                  }
+                },
+                "responses": {
+                  "201": {
+                    "description": "Plant response",
+                    "content": {}
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
-          "200": {
+          "201": {
             "description": "Plant response",
             "content": {
               "application/json": {
