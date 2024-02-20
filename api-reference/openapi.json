@@ -24,7 +24,7 @@
   "paths": {
     "/company/firmographics": {
       "post": {
-        "description": "Returns all plants from the system that the user has access 10",
+        "description": "Returns all plants from the system that the user has access 11",
         "requestBody": {
           "required": true,
           "content": {
@@ -68,10 +68,10 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/WebhookAcceptedResponse"
+                      "$ref": "#/components/schemas/FirmographicsWebhookResponse"
                     },
                     {
-                      "$ref": "#/components/schemas/Company"
+                      "$ref": "#/components/schemas/WebhookAcceptedResponse"
                     }
                   ]
                 }
@@ -159,6 +159,52 @@
             "description": "Webhook event id e.g: 963ede37-5fcf-4e41-bee7-cfbafdcabd4e",
             "type": "string",
             "format": "uuid"
+          }
+        }
+      },
+      "FirmographicsWebhookResponse": {
+        "type": "object",
+        "properties": {
+          "webhook_id": {
+            "description": "Webhook event id e.g: 963ede37-5fcf-4e41-bee7-cfbafdcabd4e",
+            "type": "string",
+            "format": "uuid"
+          },
+          "info": {
+            "type": "object",
+            "properties": {
+              "employees": {
+                "type": "object",
+                "properties": {
+                  "total": {
+                    "description": "Total number of employees that work for the company",
+                    "type": "integer"
+                  },
+                  "growth_6_months": {
+                    "description": "Growth of total employees in the last 6 months. Percentage between 0 - 1 (0.4 = 40%)",
+                    "type": "number",
+                    "format": "float"
+                  }
+                }
+              },
+              "headquaters": {
+                "type": "object",
+                "properties": {
+                  "country": {
+                    "description": "Country of company headquaters e.g. Finland",
+                    "type": "string"
+                  },
+                  "state": {
+                    "description": "State of company headquaters e.g. Uusimaa",
+                    "type": "string"
+                  },
+                  "city": {
+                    "description": "City of company headquaters e.g. Helsinki",
+                    "type": "string"
+                  }
+                }
+              }
+            }
           }
         }
       },
