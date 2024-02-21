@@ -108,7 +108,7 @@
           "testing123": {
             "{$request.body#/callback_url}": {
               "post": {
-                "description": "Returns all plants from the system that the user has access",
+                "description": "Returns extra company firmographic information.",
                 "requestBody": {
                   "required": true,
                   "content": {
@@ -141,6 +141,75 @@
                     },
                     {
                       "$ref": "#/components/schemas/FirmographicsExtraWebhookResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/company/offices/locations": {
+      "post": {
+        "description": "Get company office location details.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Company"
+              }
+            }
+          }
+        },
+        "callbacks": {
+          "testing123": {
+            "{$request.body#/callback_url}": {
+              "post": {
+                "description": "Returns all plants from the system that the user has access",
+                "requestBody": {
+                  "required": true,
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/OfficeLocationsWebhookResponse"
+                      }
+                    }
+                  }
+                },
+                "responses": {
+                  "201": {
+                    "description": "Plant response",
+                    "content": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/WebhookAcceptedResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/OfficeLocationsWebhookResponse"
                     }
                   ]
                 }
@@ -251,6 +320,32 @@
                 "description": "Indicates whether a company shows signs of being software focused. A null value means the result is **unknown**.",
                 "type": "boolean",
                 "nullable": true
+              }
+            }
+          }
+        }
+      },
+      "OfficeLocationsWebhookResponse": {
+        "type": "object",
+        "properties": {
+          "webhook_id": {
+            "description": "Webhook event id e.g: 963ede37-5fcf-4e41-bee7-cfbafdcabd4e",
+            "type": "string",
+            "format": "uuid"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "description": "The total number of offices for the company.",
+                "type": "number"
+              },
+              "countries": {
+                "description": "A list of countries the company has offices in.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           }

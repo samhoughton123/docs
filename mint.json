@@ -36,6 +36,12 @@
         "api-reference/endpoint/firmographics/base",
         "api-reference/endpoint/firmographics/extra"
       ]
+    },
+    {
+      "group": "Offices",
+      "pages": [
+        "api-reference/endpoint/offices/locations"
+      ]
     }
   ],
   "footerSocials": {
