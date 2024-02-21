@@ -229,6 +229,75 @@
         }
       }
     },
+    "/company/jobs": {
+      "post": {
+        "description": "Get company office location details.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Company"
+              }
+            }
+          }
+        },
+        "callbacks": {
+          "testing123": {
+            "{$request.body#/callback_url}": {
+              "post": {
+                "description": "Returns jobs data for given company",
+                "requestBody": {
+                  "required": true,
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/JobsFindWebhookResponse"
+                      }
+                    }
+                  }
+                },
+                "responses": {
+                  "201": {
+                    "description": "Plant response",
+                    "content": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/WebhookAcceptedResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/JobsFindWebhookResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/plants/{id}": {
       "delete": {
         "description": "Deletes a single plant based on the ID supplied",
@@ -346,6 +415,46 @@
                 "items": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        }
+      },
+      "JobsFindWebhookResponse": {
+        "type": "object",
+        "properties": {
+          "webhook_id": {
+            "description": "Webhook event id e.g: 963ede37-5fcf-4e41-bee7-cfbafdcabd4e",
+            "type": "string",
+            "format": "uuid"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "description": "The ats page url for the company",
+                "type": "string",
+                "enum": ["ATS", "LinkedIn"]
+              },
+              "ats_link": {
+                "description": "The ats page url for the company. Will be `null` if the `source` is not `ATS`",
+                "type": "string",
+                "nullable": true
+              },
+              "remote_total": {
+                "description": "The total number of jobs categorised as remote",
+                "type": "number"
+              },
+              "remote_countries": {
+                "description": "A list of countries that have jobs categorised as remote",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "total": {
+                "description": "The total number of jobs found",
+                "type": "number"
               }
             }
           }
