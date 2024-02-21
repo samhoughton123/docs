@@ -51,8 +51,8 @@
                   }
                 },
                 "responses": {
-                  "201": {
-                    "description": "Plant response",
+                  "200": {
+                    "description": "Recieved succesfully",
                     "content": {}
                   }
                 }
@@ -62,7 +62,7 @@
         },
         "responses": {
           "201": {
-            "description": "Plant response",
+            "description": "Initial Response",
             "content": {
               "application/json": {
                 "schema": {
@@ -78,12 +78,22 @@
               }
             }
           },
-          "404": {
-            "description": "Unexpected error",
+          "401": {
+            "description": "Unauthorised",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/ErrorUnauthorised"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorUnauthorised"
                 }
               }
             }
@@ -120,8 +130,8 @@
                   }
                 },
                 "responses": {
-                  "201": {
-                    "description": "Plant response",
+                  "200": {
+                    "description": "Recieved succesfully",
                     "content": {}
                   }
                 }
@@ -147,12 +157,22 @@
               }
             }
           },
-          "404": {
-            "description": "Unexpected error",
+          "401": {
+            "description": "Unauthorised",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/ErrorUnauthorised"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorUnauthorised"
                 }
               }
             }
@@ -190,8 +210,28 @@
                 },
                 "responses": {
                   "201": {
-                    "description": "Plant response",
+                    "description": "Initial response",
                     "content": {}
+                  },
+                  "401": {
+                    "description": "Unauthorised",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "$ref": "#/components/schemas/ErrorUnauthorised"
+                        }
+                      }
+                    }
+                  },
+                  "400": {
+                    "description": "Bad Request",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "$ref": "#/components/schemas/ErrorUnauthorised"
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -216,12 +256,22 @@
               }
             }
           },
-          "404": {
-            "description": "Unexpected error",
+          "401": {
+            "description": "Unauthorised",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/ErrorUnauthorised"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorUnauthorised"
                 }
               }
             }
@@ -258,8 +308,8 @@
                   }
                 },
                 "responses": {
-                  "201": {
-                    "description": "Plant response",
+                  "200": {
+                    "description": "Recieved succesfully",
                     "content": {}
                   }
                 }
@@ -285,45 +335,22 @@
               }
             }
           },
-          "404": {
-            "description": "Unexpected error",
+          "401": {
+            "description": "Unauthorised",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/ErrorUnauthorised"
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
           },
           "400": {
-            "description": "unexpected error",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/ErrorUnauthorised"
                 }
               }
             }
@@ -570,7 +597,6 @@
       },
       "Error": {
         "required": [
-          "error",
           "message"
         ],
         "type": "object",
@@ -579,6 +605,17 @@
             "type": "integer",
             "format": "int32"
           },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "ErrorUnauthorised": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
           "message": {
             "type": "string"
           }
