@@ -281,7 +281,7 @@
     },
     "/company/jobs": {
       "post": {
-        "description": "Get company office location details.",
+        "description": "Get job information for company.",
         "requestBody": {
           "required": true,
           "content": {
