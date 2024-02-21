@@ -23,6 +23,13 @@ All endpoints require an api key passed in the header.
 
 All data will be returned via a webook which can be specified when making the request. The webhook response can be found under `Option 2` in the endpoint pages.
 
+### Webhook Status
+All webhook responses will recieve a status of one of the following: `success`, `failed`, `not-found`. Credits will only be consumed when a status of success is returned. 
+
+* `success` - We successfully found the data for the given company. <br />
+* `failed` - We found data for the company but there was an issue processing it. <br />
+* `not-found` - We were unable to find data for the company. <br />
+
 ## Environments
 Both environments will require use of an api key.
 
