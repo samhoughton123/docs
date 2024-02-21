@@ -246,6 +246,11 @@
                 "description": "Indicates whether a company shows signs of being remote first. This should only be used if there is no job data, job data is more reliable for this data point. A null value means the result is **unknown**.",
                 "type": "boolean",
                 "nullable": true
+              },
+              "software_focused_company": {
+                "description": "Indicates whether a company shows signs of being software focused. A null value means the result is **unknown**.",
+                "type": "boolean",
+                "nullable": true
               }
             }
           }
