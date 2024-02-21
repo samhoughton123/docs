@@ -404,6 +404,11 @@
             "type": "string",
             "format": "uuid"
           },
+          "status": {
+            "description": "The status of the webhook response",
+            "type": "string",
+            "enum": ["success", "failed", "not-found"]
+          },
           "data": {
             "type": "object",
             "properties": {
@@ -428,6 +433,11 @@
             "description": "Webhook event id e.g: 963ede37-5fcf-4e41-bee7-cfbafdcabd4e",
             "type": "string",
             "format": "uuid"
+          },
+          "status": {
+            "description": "The status of the webhook response",
+            "type": "string",
+            "enum": ["success", "failed", "not-found"]
           },
           "data": {
             "type": "object",
@@ -454,6 +464,11 @@
             "description": "Webhook event id e.g: 963ede37-5fcf-4e41-bee7-cfbafdcabd4e",
             "type": "string",
             "format": "uuid"
+          },
+          "status": {
+            "description": "The status of the webhook response",
+            "type": "string",
+            "enum": ["success", "failed", "not-found"]
           },
           "data": {
             "type": "object",
@@ -494,6 +509,11 @@
             "description": "Webhook event id e.g: 963ede37-5fcf-4e41-bee7-cfbafdcabd4e",
             "type": "string",
             "format": "uuid"
+          },
+          "status": {
+            "description": "The status of the webhook response",
+            "type": "string",
+            "enum": ["success", "failed", "not-found"]
           },
           "data": {
             "type": "object",
