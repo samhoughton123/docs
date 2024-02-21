@@ -23,6 +23,20 @@ All endpoints require an api key passed in the header.
 
 All data will be returned via a webook which can be specified when making the request. The webhook response can be found under `Option 2` in the endpoint pages.
 
+## Environments
+Both environments will require use of an api key.
+
+### Testing
+Our testing endpoint will return a webhook response to you immediately. The data that comes back will always be for the same company (Acme Ltd) but will have a varying webhook id:
+
+``` https://testing.inbound.generatemomentum.ai/api/remote  ```
+
+### Live
+The live endpoint will take time to respond and consume Remote's credits.
+
+``` https://inbound.generatemomentum.ai/api/remote  ```
+
+
 ## OpenAPI 3.0
 
 We can provide an **OpenAPI** spec if required.

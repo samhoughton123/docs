@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "https://dev.inbound.generatemomentum.ai/api/remote"
+      "url": "https://testing.inbound.generatemomentum.ai/api/remote"
     },
     {
       "url": "https://inbound.generatemomentum.ai/api/remote"
