@@ -22,9 +22,9 @@
     }
   ],
   "paths": {
-    "/company/firmographics": {
+    "/company/firmographics/base": {
       "post": {
-        "description": "Get firmographic information for company",
+        "description": "Get the base firmographic information for a company.",
         "requestBody": {
           "required": true,
           "content": {
@@ -45,7 +45,7 @@
                   "content": {
                     "application/json": {
                       "schema": {
-                        "$ref": "#/components/schemas/Company"
+                        "$ref": "#/components/schemas/FirmographicsWebhookResponse"
                       }
                     }
                   }
@@ -72,6 +72,75 @@
                     },
                     {
                       "$ref": "#/components/schemas/FirmographicsWebhookResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/company/firmographics/extra": {
+      "post": {
+        "description": "Get extra firmographic information for a company. Extra company information is extracted from longer running enrichment process' and will therefore return slower then the base information.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Company"
+              }
+            }
+          }
+        },
+        "callbacks": {
+          "testing123": {
+            "{$request.body#/callback_url}": {
+              "post": {
+                "description": "Returns all plants from the system that the user has access",
+                "requestBody": {
+                  "required": true,
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/FirmographicsExtraWebhookResponse"
+                      }
+                    }
+                  }
+                },
+                "responses": {
+                  "201": {
+                    "description": "Plant response",
+                    "content": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/WebhookAcceptedResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/FirmographicsExtraWebhookResponse"
                     }
                   ]
                 }
@@ -162,6 +231,26 @@
           }
         }
       },
+      "FirmographicsExtraWebhookResponse": {
+        "type": "object",
+        "properties": {
+          "webhook_id": {
+            "description": "Webhook event id e.g: 963ede37-5fcf-4e41-bee7-cfbafdcabd4e",
+            "type": "string",
+            "format": "uuid"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "remote_first": {
+                "description": "Indicates whether a company shows signs of being remote first. This should only be used if there is no job data, job data is more reliable for this data point. A null value means the result is **unknown**.",
+                "type": "boolean",
+                "nullable": true
+              }
+            }
+          }
+        }
+      },
       "FirmographicsWebhookResponse": {
         "type": "object",
         "properties": {
@@ -237,6 +326,13 @@
                     "type": "number",
                     "format": "float"
                   }
+                }
+              },
+              "relevant_products": {
+                "description": "A list of Remotes products that could be relevant to this company",
+                "type": "array",
+                "items": {
+                  "type": "string"
                 }
               }
             }
