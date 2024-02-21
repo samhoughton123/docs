@@ -524,10 +524,12 @@
                   "growth_6_months": {
                     "description": "The percentage or numerical increase in the company's total number of employees over the past 6 months. Percentage between 0 - 1 (0.4 = 40%)",
                     "type": "number",
-                    "format": "float"
+                    "format": "float",
+                    "nullable": true
                   },
                   "countries": {
                     "type": "object",
+                    "nullable": true,
                     "properties": {
                       "[country]": {
                         "description": "Total number of employees located in [country]",
