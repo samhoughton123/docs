@@ -1,23 +1,28 @@
 ---
-title: 'Momentum API Reference'
-description: 'Example section for showcasing API endpoints'
+title: 'Introduction'
+description: 'Remote inbound api docs'
 ---
 
-<Note>
+{/* <Note>
   If you're not looking to build API reference documentation, you can delete
   this section by removing the api-reference folder.
-</Note>
-
-## Welcome
+</Note> */}
 
 
 ## Authentication
 
-All API endpoints are authenticated using your api key.
+All endpoints require an api key passed in the header.
 
 ```json
   {
     "x-api-key": ""
   }
-
 ```
+
+## Requests
+
+All data will be returned via a webook which can be specified when making the request. The webhook response can be found under `Option 2` in the endpoint pages.
+
+## OpenAPI 3.0
+
+We can provide an **OpenAPI** spec if required.
