@@ -39,7 +39,7 @@
           "testing123": {
             "{$request.body#/callback_url}": {
               "post": {
-                "description": "Returns all plants from the system that the user has access",
+                "description": "Returns requested company information",
                 "requestBody": {
                   "required": true,
                   "content": {
@@ -197,7 +197,7 @@
           "testing123": {
             "{$request.body#/callback_url}": {
               "post": {
-                "description": "Returns all plants from the system that the user has access",
+                "description": "Returns requested company information",
                 "requestBody": {
                   "required": true,
                   "content": {
@@ -574,26 +574,6 @@
             }
           }
         }
-      },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Company"
-          },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ]
       },
       "Error": {
         "required": [
