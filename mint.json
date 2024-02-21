@@ -23,6 +23,10 @@
   "anchors": [
 
   ],
+  "modeToggle": {
+    "default": "dark",
+    "isHidden": true
+  },
   "navigation": [
     {
       "group": "Get Started",
