@@ -36,7 +36,7 @@
           }
         },
         "callbacks": {
-          "testing123": {
+          "callbackResponse": {
             "{$request.body#/callback_url}": {
               "post": {
                 "description": "Returns requested company information",
@@ -103,7 +103,7 @@
     },
     "/company/firmographics/extra": {
       "post": {
-        "description": "Get extra firmographic information for a company. Extra company information is extracted from longer running enrichment process' and will therefore return slower then the base information.",
+        "description": "Get extra firmographic information for a company. Extra company information is extracted from longer running enrichment processes and will therefore return slower than the base information.",
         "requestBody": {
           "required": true,
           "content": {
@@ -115,7 +115,7 @@
           }
         },
         "callbacks": {
-          "testing123": {
+          "callbackResponse": {
             "{$request.body#/callback_url}": {
               "post": {
                 "description": "Returns extra company firmographic information.",
@@ -194,7 +194,7 @@
           }
         },
         "callbacks": {
-          "testing123": {
+          "callbackResponse": {
             "{$request.body#/callback_url}": {
               "post": {
                 "description": "Returns requested company information",
@@ -293,7 +293,7 @@
           }
         },
         "callbacks": {
-          "testing123": {
+          "callbackResponse": {
             "{$request.body#/callback_url}": {
               "post": {
                 "description": "Returns jobs data for given company",
@@ -374,7 +374,7 @@
             "type": "string"
           },
           "brand_name": {
-            "description": "The companies brand name e.g: Momentum Ai",
+            "description": "The company's brand name, e.g. Momentum AI",
             "type": "string"
           },
           "callback_url": {
