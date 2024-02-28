@@ -559,19 +559,19 @@
                   }
                 }
               },
-              "headquaters": {
+              "headquarters": {
                 "type": "object",
                 "properties": {
                   "country": {
-                    "description": "Country of company headquaters e.g. Finland",
+                    "description": "Country of company headquarters e.g. Finland",
                     "type": "string"
                   },
                   "state": {
-                    "description": "State of company headquaters e.g. Uusimaa",
+                    "description": "State of company headquarters e.g. Uusimaa",
                     "type": "string"
                   },
                   "city": {
-                    "description": "City of company headquaters e.g. Helsinki",
+                    "description": "City of company headquarters e.g. Helsinki",
                     "type": "string"
                   }
                 }
