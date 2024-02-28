@@ -474,7 +474,7 @@
             "type": "object",
             "properties": {
               "source": {
-                "description": "The ats page url for the company",
+                "description": "The source of the job data",
                 "type": "string",
                 "enum": ["ATS", "LinkedIn"]
               },
